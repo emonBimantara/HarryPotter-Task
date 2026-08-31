@@ -18,7 +18,7 @@ export async function getCharacters(): Promise<Character[]> {
     }
 }
 
-export async function getCharacterById(id: string): Promise<Character> {
+export async function getCharacterById(id: string): Promise<Character | null> {
     try {
         const resp = await fetch(`${BASE_URL}/character/${id}`, { cache: "no-store" })
 
@@ -26,10 +26,10 @@ export async function getCharacterById(id: string): Promise<Character> {
             throw new Error(`HTTP Error: ${resp.status}`);
         }
 
-        const respData: Character[] = await resp.json();
+        const respData = await resp.json();
 
         if (respData.length === 0) {
-            throw new Error("Character not found");
+            return null;
         }
 
         return respData[0];
