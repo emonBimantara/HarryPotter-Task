@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Harry Potter Explorer
 
-## Getting Started
+A simple web application for exploring Harry Potter characters, Hogwarts houses, and spells using the HP API.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* Browse Harry Potter characters
+* Search characters by name or actor
+* Filter characters by category and Hogwarts house
+* View character details
+* Search spells
+* Load more characters and spells
+* Loading, error, empty, and not-found states
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* Next.js
+* TypeScript
+* Tailwind CSS
+* HP API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup
 
-## Learn More
+1. Clone the repository.
+2. Navigate to the project folder: cd <project-folder>
+3. Install dependencies: npm install
+4. Run the development server: npm run dev
+5. Open `http://localhost:3000` in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+## Decisions & Trade-offs
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I kept the website UI simple and focused on usability and readability. I separated the application into smaller components and kept the page components as Server Components where possible. This allows Next.js to handle server-side rendering and metadata effectively, while interactive features such as search, filtering, and Load More are handled in separate Client Components.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+I separated the types and service logic from the UI components to keep the project organized and make the code easier to maintain. API requests are also handled in service files rather than directly inside the UI components.
 
-## Deploy on Vercel
+Loading, error, and empty states were added to provide clear feedback for different situations: while data is being fetched, when a request fails, and when a search or filter returns no results.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The API service is configured to fetch fresh data on every request to ensure users always see the most up-to-date information. The trade-off is higher server and API activity compared to using cached responses, but it eliminates the risk of displaying stale data.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+With more time, I would make further improvements to the UI and user experience based on user feedback.
