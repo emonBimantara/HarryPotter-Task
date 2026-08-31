@@ -1,5 +1,5 @@
 import { Character } from "@/types/character";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,13 +10,20 @@ type CardProps = {
 export default function Card({ character }: CardProps) {
     return (
         <div className="overflow-hidden rounded-lg bg-white shadow-sm border border-gray-100">
-            <Image
-                src={character.image}
-                alt={character.name}
-                width={300}
-                height={400}
-                className="w-full h-100 object-cover"
-            />
+            {character.image ? (
+                <Image
+                    src={character.image}
+                    alt={character.name}
+                    width={300}
+                    height={400}
+                    className="w-full h-100 object-cover"
+                />
+            ) : (
+                <div className="flex h-100 w-full flex-col items-center justify-center bg-gray-100 text-gray-400">
+                    <User className="h-8 w-8" />
+                    <span className="mt-1 text-[11px] font-medium">No image</span>
+                </div>
+            )}
 
             <div className="p-4">
                 <h2 className="font-semibold text-lg text-gray-900">{character.name}</h2>
