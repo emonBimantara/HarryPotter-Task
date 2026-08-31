@@ -1,3 +1,5 @@
+"use client";
+
 export type House =
     | "All Characters"
     | "Gryffindor"
@@ -6,9 +8,9 @@ export type House =
     | "Hufflepuff";
 
 type HouseFilterProps = {
-    house: House,
-    setHouse: (house: House) => void
-}
+    house: House;
+    setHouse: (house: House) => void;
+};
 
 const HOUSES: House[] = [
     "All Characters",
@@ -21,19 +23,24 @@ const HOUSES: House[] = [
 export default function HouseFilter({ house, setHouse }: HouseFilterProps) {
     return (
         <div className="flex flex-wrap gap-2">
-            {HOUSES.map((item) => (
-                <button
-                    key={item}
-                    type="button"
-                    onClick={() => setHouse(item)}
-                    className={`rounded-lg px-3 py-2 text-sm font-medium transition-all ${house === item
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-600 hover:bg-gray-50"
-                        }`}
-                >
-                    {item}
-                </button>
-            ))}
+            {HOUSES.map((item) => {
+                const selected = house === item;
+
+                return (
+                    <button
+                        key={item}
+                        type="button"
+                        onClick={() => setHouse(item)}
+                        className={`rounded-lg border px-3 py-1.5 text-xs font-medium ${
+                            selected
+                                ? "border-gray-900 bg-gray-900 text-white"
+                                : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
+                            }`}
+                    >
+                        {item}
+                    </button>
+                );
+            })}
         </div>
     );
 }

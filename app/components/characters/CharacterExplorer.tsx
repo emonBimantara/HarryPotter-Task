@@ -54,7 +54,7 @@ export default function CharacterExplorer({ characters }: CharacterExplorerProps
                 setHouse={setHouse}
             />
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 my-5">
                 <p>
                     Showing{" "}
                     <span className="font-semibold">{displayedCharacters.length}</span>{" "}of{" "}
