@@ -1,4 +1,3 @@
-import CharacterList from "../components/characters/CharacterList";
 import { getCharacters } from "@/service/character";
 import CharacterExplorer from "../components/characters/CharacterExplorer";
 

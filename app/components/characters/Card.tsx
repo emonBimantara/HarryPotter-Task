@@ -4,19 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 
 type CardProps = {
-    character: Character
-}
+    character: Character;
+};
 
 export default function Card({ character }: CardProps) {
     return (
-        <div className="overflow-hidden rounded-lg bg-white shadow-sm border border-gray-100">
+        <Link
+            href={`/characters/${character.id}`}
+            className="block overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm transition-shadow hover:shadow-md"
+        >
             {character.image ? (
                 <Image
                     src={character.image}
                     alt={character.name}
                     width={300}
                     height={400}
-                    className="w-full h-100 object-cover"
+                    className="h-100 w-full object-cover"
                 />
             ) : (
                 <div className="flex h-100 w-full flex-col items-center justify-center bg-gray-100 text-gray-400">
@@ -26,22 +29,17 @@ export default function Card({ character }: CardProps) {
             )}
 
             <div className="p-4">
-                <h2 className="font-semibold text-lg text-gray-900">{character.name}</h2>
+                <h2 className="text-lg font-semibold text-gray-900">{character.name}</h2>
                 <p className="text-sm text-gray-500">{character.actor}</p>
 
-                <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+                <div className="mt-4 flex items-center justify-between border-t border-gray-200 pt-4">
                     <p className="text-sm text-gray-600">{character.ancestry}</p>
                     <div className="flex items-center gap-1">
-                        <Link
-                            href={`/characters/${character.id}`}
-                            className="text-sm font-medium text-gray-900"
-                        >
-                            View
-                        </Link>
+                        <span className="text-sm font-medium text-gray-900">View</span>
                         <ArrowRight size={15} />
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }

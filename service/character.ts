@@ -13,7 +13,28 @@ export async function getCharacters(): Promise<Character[]> {
         const respData = await resp.json()
         return respData
     } catch (error) {
-        console.error("GET CHARACTERS ERROR:", error);
+        console.error(error);
+        throw error;
+    }
+}
+
+export async function getCharacterById(id: string): Promise<Character> {
+    try {
+        const resp = await fetch(`${BASE_URL}/character/${id}`, { cache: "no-store" })
+
+        if (!resp.ok) {
+            throw new Error(`HTTP Error: ${resp.status}`);
+        }
+
+        const respData: Character[] = await resp.json();
+
+        if (respData.length === 0) {
+            throw new Error("Character not found");
+        }
+
+        return respData[0];
+    } catch (error) {
+        console.error(error);
         throw error;
     }
 }

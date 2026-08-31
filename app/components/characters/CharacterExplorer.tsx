@@ -57,13 +57,8 @@ export default function CharacterExplorer({ characters }: CharacterExplorerProps
             <div className="flex flex-col gap-4">
                 <p>
                     Showing{" "}
-                    <span className="font-semibold">
-                        {displayedCharacters.length}
-                    </span>{" "}
-                    of{" "}
-                    <span className="font-semibold">
-                        {filteredCharacters.length}
-                    </span>{" "}
+                    <span className="font-semibold">{displayedCharacters.length}</span>{" "}of{" "}
+                    <span className="font-semibold">{filteredCharacters.length}</span>{" "}
                     characters
                 </p>
 
