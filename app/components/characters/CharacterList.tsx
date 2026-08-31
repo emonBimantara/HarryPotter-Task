@@ -1,20 +1,19 @@
+import { Character } from "@/types/character";
 import Card from "./Card";
 
-export default function CharacterList() {
+type CharacterListProps = {
+    characters: Character[]
+}
+
+export default function CharacterList({ characters }: CharacterListProps) {
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {characters.map((character) => (
+                <Card 
+                    key={character.id}
+                    character={character}
+                />
+            ))}
         </div>
     );
 }
