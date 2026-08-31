@@ -12,9 +12,6 @@ export function Footer() {
           <Link href="/characters" className="hover:text-gray-900 transition-colors">
             Characters
           </Link>
-          <Link href="/houses" className="hover:text-gray-900 transition-colors">
-            Houses
-          </Link>
           <Link href="/spells" className="hover:text-gray-900 transition-colors">
             Spells
           </Link>

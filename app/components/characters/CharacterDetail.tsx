@@ -45,7 +45,6 @@ export default function CharacterDetail({ character }: CharacterDetailProps) {
                         {character.alternate_names.length > 0 && (
                             <div className="mt-4">
                                 <p className="mb-1 text-xs font-semibold text-gray-700">Also known as</p>
-
                                 <p className="text-xs leading-relaxed text-gray-500">
                                     {character.alternate_names.join(", ")}
                                 </p>
