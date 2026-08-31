@@ -1,7 +1,6 @@
-import Button from "../components/ui/Button";
 import CharacterList from "../components/characters/CharacterList";
-import SearchBox from "../components/characters/SearchBox";
 import { getCharacters } from "@/service/character";
+import CharacterExplorer from "../components/characters/CharacterExplorer";
 
 export default async function Characters() {
     const characters = await getCharacters()
@@ -15,18 +14,7 @@ export default async function Characters() {
                 </p>
             </div>
 
-            <SearchBox />
-
-            <div className="flex flex-col gap-4">
-                <p>
-                    Showing{" "}
-                    <span className="font-semibold">20</span> of{" "}
-                    <span className="font-semibold">{characters.length}</span>{" "}
-                    characters
-                </p>
-
-                <CharacterList characters={characters} />
-            </div>
+            <CharacterExplorer characters={characters} />
         </div>
     )
 }
