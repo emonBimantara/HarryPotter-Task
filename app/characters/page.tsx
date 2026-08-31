@@ -5,7 +5,6 @@ import { getCharacters } from "@/service/character";
 
 export default async function Characters() {
     const characters = await getCharacters()
-    const displayedCharacters = characters.slice(0, 20);
 
     return (
         <div className="flex flex-col gap-5 my-7 mx-5 lg:mx-20">
@@ -21,14 +20,13 @@ export default async function Characters() {
             <div className="flex flex-col gap-4">
                 <p>
                     Showing{" "}
-                    <span className="font-semibold">{displayedCharacters.length}</span> of{" "}
-                    <span className="font-semibold">{characters.length}</span> characters
+                    <span className="font-semibold">20</span> of{" "}
+                    <span className="font-semibold">{characters.length}</span>{" "}
+                    characters
                 </p>
 
-                <CharacterList characters={displayedCharacters} />
+                <CharacterList characters={characters} />
             </div>
-
-            <div className="flex justify-center"><Button /></div>
         </div>
     )
 }
