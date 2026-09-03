@@ -1,5 +1,12 @@
 import { getCharacters } from "@/service/character";
 import CharacterExplorer from "../components/characters/CharacterExplorer";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+    return {
+        title: "Characters | Harry Potter Explorer"
+    }
+}
 
 export default async function Characters() {
     const characters = await getCharacters()

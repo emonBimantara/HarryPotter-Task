@@ -1,6 +1,7 @@
 import { Character } from "@/types/character";
 
 const BASE_URL = process.env.API_URL;
+const BASE_URL2 = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getCharacters(): Promise<Character[]> {
     try {
@@ -20,7 +21,7 @@ export async function getCharacters(): Promise<Character[]> {
 
 export async function getCharacterById(id: string): Promise<Character | null> {
     try {
-        const resp = await fetch(`${BASE_URL}/character/${id}`, { cache: "no-store" })
+        const resp = await fetch(`${BASE_URL2}/character/${id}`, { cache: "no-store" })
 
         if (!resp.ok) {
             throw new Error(`HTTP Error: ${resp.status}`);
